@@ -5,14 +5,16 @@ using namespace std;
 void Game::mainGame(std::string target, const std::unordered_set<std::string> realWords){
     Word w;
     bool again = true;
-    bool finished = false;
-    bool won = false;
     string input = "";
 
     while(again){
         srand(time(0));
+        bool finished = false;
+        bool valid = false;
+        bool won = false;
         count = 0;
         again = false;
+        again2 = "";
 
         target = w.findTarget(realWords);
         cout << target << "\n\n" << endl;
@@ -20,7 +22,11 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
         cout << "Welcome to wordle!\n" << endl;
 
         while(!finished){
-            cin >> input;
+            while(!valid){
+                cin >> input;
+                valid = w.validInput(realWords, input);
+            }
+            valid = false;
             int counter[5] = {0, 0, 0, 0, 0};
             int placed[5] = {0, 0, 0, 0, 0};
 
@@ -35,7 +41,7 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
             }
 
             if(input == target){
-                cout << "\u001b[42m" << target << "\u001b[0m\n" << endl;
+                cout << "\u001b[1A\u001b[42m" << target << "\u001b[0m\n" << endl;
                 won = true;
                 finished = true;
                 break;
@@ -83,31 +89,40 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
             }
 
             for(int i = 0; i < 5; i++){
+                if(i == 0) cout << "\u001b[1A";
+
                 if(c[i] == true) {
-                    cout << "\u001b[42m" << l[i] << "\u001b[0m";
+                    cout << "\u001b[42;1m" << l[i] << "\u001b[0m";
                 }
                 
                 else if(e[i] == true) {
-                    cout << "\u001b[43m" << l[i] << "\u001b[0m";
+                    cout << "\u001b[43;1m" << l[i] << "\u001b[0m";
                 }
                 else {
                     cout << l[i];
                 }
-                if(i == 5) cout << endl;
+
+                if(i == 4) cout << endl;
             }
 
             count++;
             if(count == 5){
-                    finished = true;
-                }
+                finished = true;
+            }
 
         }
 
         if(won == true){
-            cout << "Well done!" << endl;
+            cout << "Well done!\n" << endl;
         }
          else{
-            cout << "You lost" << endl;
+            cout << "You lost\n" << endl;
         }
+
+        cout << "Would you like to play again?(y = yes, other letter = exit)" << endl;
+        //again2 = getchar();
+        cin >> again2;
+
+        if(again2 == "y") again = true;
     }
 }

@@ -17,9 +17,9 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
         again2 = "";
 
         target = w.findTarget(realWords);
-        cout << target << "\n\n" << endl;
+        cout << target << "\n" << endl;
 
-        cout << "Welcome to wordle!\n" << endl;
+        //cout << "Welcome to wordle!\n" << endl;
 
         while(!finished){
             while(!valid){
@@ -38,6 +38,11 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
                 for(int j = 0; j < 5; j++){
                     if(t[i] == target.at(j))counter[i]++;
                 }
+            }
+
+            if(input == "/h"){
+                int r = (rand() % 5) + 1;
+                cout << "Hint: the letter in position " << r << " is " << t[r-1] << endl;
             }
 
             if(input == target){

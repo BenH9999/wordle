@@ -3,6 +3,8 @@
 #include <ctime>
 #include "Word.h"
 #include "Game.h"
+#include "Menu.h"
+
 using namespace std;
 
 int main(){
@@ -11,7 +13,7 @@ int main(){
     string filename = "valid-wordle-words.txt";
 
     Word w; 
-    Game g;
+    Menu m;
     
     std::string word;
     std::ifstream file(filename);
@@ -20,7 +22,7 @@ int main(){
         realWords.insert(word);
     }
 
-    g.mainGame(target, realWords);
+    m.menu(target, realWords);
 
     return 0;
 }

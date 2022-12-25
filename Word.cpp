@@ -9,8 +9,7 @@ std::string Word::findTarget(const std::unordered_set<std::string>& Word){
 
 bool Word::validInput(const std::unordered_set<std::string> & Word, std::string& input){
     bool valid = false;
-    if(Word.find(input) != Word.end()){
-        valid = true;
-    }
+    if(Word.find(input) != Word.end() || input == "/h")valid = true;
+
     return valid;
 }

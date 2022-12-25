@@ -5,8 +5,10 @@
 #include <iostream>
 #include <unordered_set>
 #include "Word.h"
+#include "Menu.h"
 #include <conio.h>
 #include <cstdio>
+#include <random>
 
 class Game{
     public:

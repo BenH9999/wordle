@@ -12,7 +12,7 @@
 
 class Game{
     public:
-        void mainGame(std::string target, const std::unordered_set<std::string> realWords);
+        void mainGame(std::string target, const std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length);
         void display(const std::string target, const std::string input);
     private:
         bool again;
@@ -20,13 +20,9 @@ class Game{
         bool valid;
         bool finished, won;
         int count;
-        int counter[5];
-        int placed[5];
         std::string temp;
-        char l[5], t[5];
-        bool e[5];
-        bool c[5];
         std::string input;
+        bool validLength;
 };
 
 #endif

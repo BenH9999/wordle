@@ -9,8 +9,10 @@ using namespace std;
 
 int main(){
     std::unordered_set<std::string> realWords;
+    std::unordered_set<std::string> chosenWords;
+    int length = 5;
     string target = "";
-    string filename = "valid-wordle-words.txt";
+    string filename = "allWords.txt";
 
     Word w; 
     Menu m;
@@ -22,7 +24,7 @@ int main(){
         realWords.insert(word);
     }
 
-    m.menu(target, realWords);
+    m.menu(target, realWords, chosenWords, length);
 
     return 0;
 }

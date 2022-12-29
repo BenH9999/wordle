@@ -4,18 +4,40 @@
 using namespace std;
 
 void Menu::displayOptions(){
-    cout << "++++++++++++++\nWelcome to Wordle!\n\n1. Instructions\n2. Start" << endl;
+    cout << "++++++++++++++\nWelcome to Wordle!\n\n1. Instructions\n2. Start\n3. Set difficulty" << endl;
 }
 
-void Menu::menu(std::string target, std::unordered_set<std::string> realWords){
+int Menu::getLength(bool validLength, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length){
+    while(!validLength){
+            cout << "What difficulty(length of the word) would you like to play the game with?" << endl;
+            cin >> length;
+
+            for(const string& Word : realWords){
+                if(Word.length() == length) {
+                    validLength = true;
+                    break;
+                    //chosenWords.insert(Word);
+                }
+            }
+    }
+    return length;
+}
+
+void Menu::menu(std::string target, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length){
     Game g;
+    validLength = false;
 
     displayOptions();
     cin >> input;
     cout << "\u001b[1A";
     switch(input){
         case 1: cout << "Not yet released" << endl;
-                menu(target, realWords);
-        case 2: g.mainGame(target, realWords);
+                menu(target, realWords, chosenWords, length);
+
+        case 2: length = getLength(validLength, realWords, chosenWords, length);
+                g.mainGame(target, realWords, chosenWords, length);
+                break;
+
+        case 3: menu(target, realWords, chosenWords, length);
     }
 }

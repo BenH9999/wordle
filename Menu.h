@@ -7,10 +7,12 @@
 
 class Menu{
     public:
-        void menu(std::string target, std::unordered_set<std::string> realWords);
+        void menu(std::string target, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length);
+        int getLength(bool validLength, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length);
         void displayOptions();
     private:
         int input;
+        int validLength;
 };
 
 #endif

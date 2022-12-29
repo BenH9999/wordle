@@ -4,7 +4,7 @@
 using namespace std;
 
 void Menu::displayOptions(){
-    cout << "++++++++++++++\nWelcome to Wordle!\n\n1. Instructions\n2. Start\n3. Set difficulty" << endl;
+    cout << "++++++++++++++\nWelcome to Wordle!\n\n1. Instructions\n2. Start" << endl;
 }
 
 int Menu::getLength(bool validLength, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length){
@@ -16,7 +16,6 @@ int Menu::getLength(bool validLength, std::unordered_set<std::string> realWords,
                 if(Word.length() == length) {
                     validLength = true;
                     break;
-                    //chosenWords.insert(Word);
                 }
             }
     }
@@ -37,7 +36,5 @@ void Menu::menu(std::string target, std::unordered_set<std::string> realWords, s
         case 2: length = getLength(validLength, realWords, chosenWords, length);
                 g.mainGame(target, realWords, chosenWords, length);
                 break;
-
-        case 3: menu(target, realWords, chosenWords, length);
     }
 }

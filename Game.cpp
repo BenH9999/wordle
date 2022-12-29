@@ -4,6 +4,7 @@ using namespace std;
 
 void Game::mainGame(std::string target, const std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length){
     Word w;
+    Menu m;
     bool again = true;
     string input = "";
 
@@ -256,6 +257,9 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
         //again2 = getchar();
         cin >> again2;
 
-        if(again2 == "y") again = true;
+        if(again2 == "y") {
+          again = true;
+          length = m.getLength(validLength, realWords, chosenWords, length);
+        }
     }
 }

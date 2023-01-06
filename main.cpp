@@ -12,7 +12,7 @@ int main(){
     std::unordered_set<std::string> chosenWords;
     int length = 5;
     string target = "";
-    string filename = "allWords.txt";
+    string filename = "english3.txt";
 
     Word w; 
     Menu m;

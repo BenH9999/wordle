@@ -250,7 +250,7 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
             cout << "Well done!\n" << endl;
         }
          else{
-            cout << "You lost\n" << endl;
+            cout << "You lost\nAnswer: " << target << endl;
         }
 
         cout << "Would you like to play again?(y = yes, other letter = exit)" << endl;
@@ -260,6 +260,9 @@ void Game::mainGame(std::string target, const std::unordered_set<std::string> re
         if(again2 == "y") {
           again = true;
           length = m.getLength(validLength, realWords, chosenWords, length);
+          for(const string& Word : realWords){
+            if(Word.length() == length) chosenWords.insert(Word);
+          }
         }
     }
 }

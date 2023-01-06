@@ -22,6 +22,10 @@ int Menu::getLength(bool validLength, std::unordered_set<std::string> realWords,
     return length;
 }
 
+void Menu::setChosenWords(int length, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords){
+    
+}
+
 void Menu::menu(std::string target, std::unordered_set<std::string> realWords, std::unordered_set<std::string> chosenWords, int length){
     Game g;
     validLength = false;
